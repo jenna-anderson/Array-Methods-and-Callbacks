@@ -73,7 +73,7 @@ function getWinners(arr, callback) {
             return item["Away Team Name"];
         }
         else{
-            if(item["Win conditions"].includes(item.["Home Team Name"])){
+            if(item["Win conditions"].includes(item["Home Team Name"])){
                 return item["Home Team Name"];
             }
             else{
@@ -97,11 +97,14 @@ hint: the strings returned need to exactly match the string in step 4.
  */
 
 function getWinnersByYear(arr, getYearsCB, getWinnersCB) {
-    const yearWinners = {"Year": getYearsCB(arr), "Winner": getWinnersCB(arr)};
-    console.log(yearWinners);
-
+    const winnersByYear = getWinnersCB(arr).map((item, index) =>
+        `In ${getYearsCB(arr)[index]}, ${item} won the world cup!`
+    )
+    return winnersByYear;
 }
-// getWinnersByYear(fifaData, getYears, getWinners);
+// console.log(getWinnersByYear(fifaData, getYears(fifaData, getFinals), getWinners(fifaData, getFinals)));
+// console.log(getWinnersByYear(fifaData, getYears, getWinners));
+
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
